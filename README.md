@@ -62,21 +62,20 @@ To submit your answers:
 ## References
 
 ### How to get started with Datadog
-* [Datadog overview](http://docs.datadoghq.com/overview/)
+* [Datadog getting started](https://docs.datadoghq.com/getting_started/)
 * [Guide to graphing in Datadog](http://docs.datadoghq.com/graphing/)
-* [Guide to monitoring in Datadog](http://docs.datadoghq.com/guides/monitoring/)
+* [Guide to monitoring in Datadog](https://docs.datadoghq.com/monitors/)
 
 ### The Datadog Agent and Metrics
 
-* [Guide to the Agent](http://docs.datadoghq.com/guides/basic_agent_usage/)
+* [Guide to the Agent](http://docs.datadoghq.com/agent/)
 * [Datadog Docker-image repo](https://hub.docker.com/r/datadog/docker-dd-agent/)
-* [Writing an Agent check](http://docs.datadoghq.com/guides/agent_checks/)
+* [Writing an Agent check](https://docs.datadoghq.com/agent/agent_checks/)
 * [Datadog API](https://docs.datadoghq.com/api/)
 
-### Examples of Previous Blog Posts for Reference
-* [Terraform](https://www.datadoghq.com/blog/managing-datadog-with-terraform/)
-* [Jenkins](https://www.datadoghq.com/blog/monitor-jenkins-datadog/)
-* [Google Compute Engine](https://www.datadoghq.com/blog/monitor-google-compute-engine-performance-with-datadog/)
+### APM
+* [Datadog Tracing Docs](https://docs.datadoghq.com/tracing)
+* [Flask Introduction](http://flask.pocoo.org/docs/0.12/quickstart/)
 
 ### Vagrant
  * [Setting Up Vagrant](https://www.vagrantup.com/intro/getting-started/)
