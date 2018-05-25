@@ -139,6 +139,7 @@ Provide `tags` section:
 Note: mysql_secure_installation is not executed
 
 2. Sample MySQL database
+
 Using instructions under [Connecting to the MySQL Server with the mysql Client](https://dev.mysql.com/doc/mysql-getting-started/en/#mysql-getting-started-connecting)
 
 The following commands were used to estanblish a sample instance and execute typical session:
