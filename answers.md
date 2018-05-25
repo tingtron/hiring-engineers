@@ -11,6 +11,8 @@ installed at `C:\VM\Vagrant`
 
 2. Intall VirtualBox
 
+Following instructions at [Download VirtualBox](https://www.virtualbox.org/wiki/Downloads)
+
 3. Reboot
 
 4. Spin-up default VM:
@@ -328,3 +330,10 @@ it is "Basic", which tracks simple rolling quantile range (e.g. 5% - 95%).
 It does not take into account non-linear shifts or periodic seasonal trends.
 The Bounds parameter determines how narrow (small values near 1) or wide (values near 6)
 the normal area is; the wider the area, the fewer anomalies it will determine.
+
+## Final Question:
+
+The Datadog community has written a substantial number of high quality integrations and libraries. Select one from [this page](https://docs.datadoghq.com/developers/libraries/). With this selection in mind, write a blog post that announces your selection and explains the benefits it offers our users/community. The post should cover installation, configuration, usage, and best practices along with code samples where applicable. You should also thank the contributor for their effort.
+
+Blog post: ...
+
