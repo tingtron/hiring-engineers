@@ -5,8 +5,9 @@ Using Windows 10
 
 1. Install Vagrant
 
-   Following instructions for setting up [Vagrant with Ubuntu 12.04 VM](https://github.com/jeremy-lq/hiring-engineers/blob/tech-writer/README.md#vagrant),
-   installed at `C:\VM\Vagrant`
+Following instructions for setting up [Vagrant with Ubuntu 12.04 VM](https://github.com/jeremy-lq/hiring-engineers/blob/tech-writer/README.md#vagrant),
+
+installed at `C:\VM\Vagrant`
 
 2. Intall VirtualBox
 
@@ -35,7 +36,8 @@ Start and connect shell:
 Note: SSH username: `vagrant / vagrant`
 
 5. Linux shell update
-    - install curl
+
+Install curl
 ```
     $ sudo apt-get update
     $ sudo apt-get install curl
@@ -272,7 +274,7 @@ and in Hosts view:
 
 5. Change your check's collection interval so that it only submits the metric once every 45 seconds.
 
-Bonus Question Can you change the collection interval without modifying the Python check file you created?
+**Bonus Question:** Can you change the collection interval without modifying the Python check file you created?
 ```
     $ sudo vi /etc/datadog-agent/conf.d/my_check.yaml
 
