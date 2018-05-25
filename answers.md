@@ -296,7 +296,9 @@ The snapshot is captured in the Dashboard tile using the "camera" icon.
 The target user is indicated with `@` notation, which promts with available email address.
 
 The resulting snapshot can be found in the Events UI:
-<img>
+
+![Dashboard Snapshot](100_Dashboard_Snapshot.png)
+
 
 **Bonus Question:** What is the Anomaly graph displaying?
 
