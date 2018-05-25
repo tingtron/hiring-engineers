@@ -278,9 +278,8 @@ and in Hosts view:
 
 **Bonus Question:** Can you change the collection interval without modifying the Python check file you created?
 
-`vi /etc/datadog-agent/conf.d/my_check.yaml`:
+`/etc/datadog-agent/conf.d/my_check.yaml`:
 ```
-
         init_config:
 
         instances:
@@ -318,7 +317,6 @@ The target user is indicated with `@` notation, which promts with available emai
 The resulting snapshot can be found in the Events UI:
 
 ![Dashboard Snapshot](100_Dashboard_Snapshot.png)
-
 
 **Bonus Question:** What is the Anomaly graph displaying?
 
