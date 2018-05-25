@@ -45,7 +45,7 @@ Install curl
     $ sudo apt-get install curl
 ```
 
-7. Install DataDog
+7. Install Datadog
 ```
     $ export DD_API_KEY=baa4d41e9cbdd3ffc335a6acc3476071 
     $ bash -c "$(curl -L https://raw.githubusercontent.com/DataDog/datadog-agent/master/cmd/agent/install_script.sh)"
@@ -299,7 +299,7 @@ and in Hosts view:
 
 Get API_KEY and APP_KEY using [Integrations / API Keys](https://app.datadoghq.com/account/settings#api)
 
-1. Install datadog API on local machine:
+1. Install Datadog API on local machine:
 ```
     > pip install datadog
 ```
