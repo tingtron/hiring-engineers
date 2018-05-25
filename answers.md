@@ -292,6 +292,8 @@ Get API_KEY and APP_KEY using [Integrations / API Keys](https://app.datadoghq.co
 
 3. Capture snapshot in Dashboard UI
 
+![API Timeboard 5m](090_API_Timeboard_5m.png)
+
 The snapshot is captured in the Dashboard tile using the "camera" icon.
 The target user is indicated with `@` notation, which promts with available email address.
 
