@@ -142,7 +142,7 @@ Note: mysql_secure_installation is not executed
 
 Using instructions under [Connecting to the MySQL Server with the mysql Client](https://dev.mysql.com/doc/mysql-getting-started/en/#mysql-getting-started-connecting)
 
-The following commands were used to estanblish a sample instance and execute typical session:
+The following commands were used to establish a sample instance and execute typical session:
 ```
     $ mysql -u root
     > create database pets;
