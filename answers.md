@@ -121,7 +121,8 @@ Provide `tags` section:
 ```
 
 3. Show Host and its tags on the Host Map page in Datadog
-<img>
+
+![Tags in Hosts](030_Tags_done.png)
 
 ### Install a Datadog integration with a local database
 
@@ -193,9 +194,10 @@ select * from cats;
 ```
 
 5. Show database metrics
-<img>
 
-23. Custom Agent check that submits a specifc random metric
+![MySql Metrics](040_MySql_done.png)
+
+### Custom Agent check that submits a specifc random metric
 
 1. Create Python code for the Agent check
 
@@ -259,6 +261,15 @@ select * from cats;
               Average Execution Time : 0ms
 ```
 
+The resulting metric is available in Metrics UI
+
+![Check Metric](050_Check_Metric.png)
+
+and in Hosts view:
+
+![Check Metric in Hosts](060_Check_Metric_Host.png)
+
+
 5. Change your check's collection interval so that it only submits the metric once every 45 seconds.
 
 Bonus Question Can you change the collection interval without modifying the Python check file you created?
@@ -274,6 +285,8 @@ Bonus Question Can you change the collection interval without modifying the Pyth
 5. Restart Agent (see above)
 
 6. Show Dashboard with time change from 15 seconds to 45 seconds.
+
+![Check Metric 45s](070_Check_Metric_45s.png)
 
 ## Visualizing Data
 
