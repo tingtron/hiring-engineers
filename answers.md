@@ -217,7 +217,7 @@ select * from cats;
 ```
 2. Create check configuration file:
 
-`/etc/datadog-agent/conf.d/my_check.yaml`
+`/etc/datadog-agent/conf.d/my_check.yaml`:
 ```
         init_config:
 
@@ -277,8 +277,9 @@ and in Hosts view:
 5. Change your check's collection interval so that it only submits the metric once every 45 seconds.
 
 **Bonus Question:** Can you change the collection interval without modifying the Python check file you created?
+
+`vi /etc/datadog-agent/conf.d/my_check.yaml`:
 ```
-    $ sudo vi /etc/datadog-agent/conf.d/my_check.yaml
 
         init_config:
 
