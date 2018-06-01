@@ -105,6 +105,8 @@ Used when editing the main configuration file and the agents':
         ... process 16581
 ```
 
+For more details, see [Agent commands](https://docs.datadoghq.com/agent/faq/agent-commands/).
+
 ## Collecting Metrics
 
 Reference locations:
