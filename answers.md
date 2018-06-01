@@ -45,7 +45,7 @@ Install curl
     $ sudo apt-get install curl
 ```
 
-7. Install Datadog
+### Install Datadog
 ```
     $ export DD_API_KEY=baa4d41e9cbdd3ffc335a6acc3476071 
     $ bash -c "$(curl -L https://raw.githubusercontent.com/DataDog/datadog-agent/master/cmd/agent/install_script.sh)"
@@ -94,6 +94,17 @@ Check logs if there are error or for future reference:
     /var/log/datadog/agent.log
 ```
 
+### Restart Agent
+Used when editing the main configuration file and the agents':
+ * `/etc/datadog-agent/datadog.yaml`
+ * `/etc/datadog-agent/conf.d/mysql.d/conf.yaml`
+ * etc
+
+```
+    $ sudo service datadog-agent restart
+        ... process 16581
+```
+
 ## Collecting Metrics
 
 Reference locations:
@@ -118,11 +129,7 @@ Provide `tags` section:
       - my_role:tech_writer
 ```
 
-2. Restart Agent:
-```
-    $ sudo service datadog-agent restart
-        ... process 16581
-```
+2. Restart Agent (see [above](#restart-agent))
 
 3. Show Host and its tags on the Host Map page in Datadog
 
@@ -182,7 +189,7 @@ conf.yaml:
               galera_cluster: 1
 ```
 
-Restart Agent (see above)
+Restart Agent (see [above](#restart-agent))
 
 4. Sample MySQL sessions
 
@@ -226,7 +233,7 @@ select * from cats;
             [{}]
 ```
 
-3. Restart Agent (see above)
+3. Restart Agent (see [above](#restart-agent))
 
 4. Verify the custom check:
 ```
@@ -287,7 +294,7 @@ and in Hosts view:
             - min_collection_interval: 45
 ```
 
-5. Restart Agent (see above)
+5. Restart Agent (see [above](#restart-agent))
 
 6. Show Dashboard with time change from 15 seconds to 45 seconds.
 
