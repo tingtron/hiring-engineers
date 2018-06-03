@@ -157,7 +157,6 @@ which will determine the size and time of the response.
 
 For the puposes of this demo, our sample application will generate
 random text whose size is proportionate to the response complexity, i.e. _O(n)_.
-
 The time will be defined as _square_ of the complexity parameter, _O(n<sup>2</sup>)_.
 
 Here's the section of code, responsible for generating the output
@@ -181,13 +180,6 @@ function rndText(n, m, nl, ml, nw, mw) {
 }
 
 var server = http.createServer(function (request, response) {
-
-  request.on('error', (err) => {
-    console.error(err);
-  });
-  response.on('error', (err) => {
-    console.error(err);
-  })
 
    var r = Math.random() * 10;   // random complexity 0..10
    var n = Math.floor(4*r) + 1;  // data size 1..40
