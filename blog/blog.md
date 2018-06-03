@@ -207,6 +207,13 @@ npm install request-stats --save
 
 Test using a simple web app and console output.
 
+The statistics captured by `request-stats` are represented in nested JSON structures.
+The statistics we are interested in are:
+ * response size
+ * response time
+ * error count
+
+![Request_Stats](050_Request_Stats.png)
 
 
 ## Analysis of Pre-Error Metrics
