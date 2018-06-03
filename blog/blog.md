@@ -5,7 +5,7 @@
 
 Using Vagrant hashicorp/precise64
 
-## Installing Node.js ==
+## Installing Node.js
 
 Follow Installing Node.js via package manager - Debian and Ubuntu based Linux distributions
     https://nodejs.org/en/download/package-manager/#debian-and-ubuntu-based-linux-distributions
@@ -62,7 +62,7 @@ client libraries.
 
 Verify the custom metrics in DataDog UI
 
-010_Custom_Metric_Shell.png
+![Custom Metric from shell](010_Custom_Metric_Shell.png)
 
 ## Choosing Libraries
 
