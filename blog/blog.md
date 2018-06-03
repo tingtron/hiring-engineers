@@ -153,16 +153,6 @@ This would allow dry-running the environment to verify the instrumentation
 infrastructure and veify the correct topology assumptions.
 
 
-## Collecting Node.js Stats
-
-Installing `request-stats`
-```
-npm install request-stats --save
-```
-
-Test using a simple web app and console output.
-
-
 ## Load Testing
 
 Install loadtest. See https://www.npmjs.com/package/loadtest
@@ -188,6 +178,35 @@ Higher load rate (after saturation)
 ```
 loadtest -n 2000 -c 500 --rps 1000 http://127.0.0.1:8081/
 ```
+
+After increasing the load on the test web page, we can observe
+increased resource consumption in the DataDog System Dashboard.
+In particular, System Load, CPU Usage and System Memory show
+visible increase.
+
+![Load Saturation](040_Load_Saturation.png)
+
+We should exect that after further increase of the load, the server
+performance would suffer, and errors will start to appear.
+However, to get more specific insight into performance of individual
+requests, such as reposne time and error counts, we need to capture
+request procecing statistics.
+
+Note: there are several ways to capture web request processing performance,
+such as in transport layer, etc. However, here we'll be capturing
+statistics from inside the Node.js code itself. So we can configure
+the complexity of responses (time and size in particular), and error
+triggering mechanism.
+
+## Collecting Node.js Stats
+
+Installing `request-stats`
+```
+npm install request-stats --save
+```
+
+Test using a simple web app and console output.
+
 
 
 ## Analysis of Pre-Error Metrics
