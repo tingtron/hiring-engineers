@@ -3,7 +3,7 @@
 
 
 
-Using Vagrant hashicorp/precise64
+Using Vagrant `hashicorp/precise64` template.
 
 ## Installing Node.js
 
@@ -17,22 +17,27 @@ we will read about running Node.js >= 6.x on older distros.
 
 First ensure curl and certificates are up-to-date.
 This may help prevent SSL transport issues.
-
+```
     $ sudo apt-get update
     $ sudo apt-get -y install curl apt-transport-https ca-certificates
-
+```
 Install Clang
+```
     $ sudo apt-get install -y clang-3.4
-
+```
 Install Node.js
+```
     $ curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
+```
 
-Test with hello.js
+Note: if there are issue installing Node.js or later packages, see [Troubleshooting][#troubleshooting] below.
 
-Forward VM ports to host in Vagrant
+Test with `hello.js`
 
+Forward VM ports to host in the `Vagrantfile` configuration
+```
     config.vm.network "forwarded_port", guest: 8081, host: 8081, host_ip: "127.0.0.1"
-
+```
 ## Configure DogStatsD
 
 Follow https://docs.datadoghq.com/developers/dogstatsd/
@@ -91,7 +96,7 @@ On older Ubuntu distributions (precise), the versions of node and npm are outdat
 npm v1.1.4 and node v0.6.12.
 This may cause conflicts with npm registry, e.g. getting an error "failed to fetch from registry".
 
-Using `mvm` http://clubmate.fi/install-node-and-npm-to-a-ubuntu-box/
+Using `nvm` http://clubmate.fi/install-node-and-npm-to-a-ubuntu-box/
 
 This will install the more recent versions of node (v0.11.14) and npm (2.0.0).
 
@@ -133,13 +138,11 @@ client.increment('my_counter')
 
 Verify the custom metrics in DataDog UI
 
-
-020_Custom_Counters_Node.png
+![Custom Counters from Node.js](020_Custom_Counters_Node.png)
 
 And custom Event in the Events dashboard:
 
-030_Custom_Events_Node.png
-
+![Custom Events from Node.js](030_Custom_Events_Node.png)
 
 ## Sample Node.js Web Application
 
