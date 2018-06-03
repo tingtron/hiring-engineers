@@ -152,6 +152,66 @@ application with configurable processing and resource consumption parameters.
 This would allow dry-running the environment to verify the instrumentation
 infrastructure and veify the correct topology assumptions.
 
+To model real life behavior, we will use a random complexity parameter _(n)_,
+which will determine the size and time of the response.
+
+For the puposes of this demo, our sample application will generate
+random text whose size is proportionate to the response complexity, i.e. _O(n)_.
+
+The time will be defined as _square_ of the complexity parameter, _O(n<sup>2</sup>)_.
+
+Here's the section of code, responsible for generating the output
+and determining the size and time based on random complexity.
+
+```
+function rnd(n, m) {  // inclusive
+    return n + Math.floor(Math.random() * (m - n + 1)); 
+}
+function strFill(n, a) {
+    return Array(n + 1).join(a || " "); 
+}
+function rndWord(n, m) {
+    return strFill(rnd(n, m)).replace(/ /g, x => String.fromCharCode(rnd(0, 25) + 65 + 32)); 
+}
+function rndLine(n, m, nw, mw) {
+    return strFill(rnd(n, m)).replace(/ /g, x => rndWord(nw, mw) + " "); 
+}
+function rndText(n, m, nl, ml, nw, mw) { 
+    return strFill(rnd(n, m)).replace(/ /g, x => rndLine(nl, ml, nw, mw) + "\n"); 
+}
+
+var server = http.createServer(function (request, response) {
+
+  request.on('error', (err) => {
+    console.error(err);
+  });
+  response.on('error', (err) => {
+    console.error(err);
+  })
+
+   var r = Math.random() * 10;   // random complexity 0..10
+   var n = Math.floor(4*r) + 1;  // data size 1..40
+   var t = Math.floor(r*r) + 10; // time      10..109
+   var text = rndText(3, 10+n, 8, 12, 2, 8)
+```
+
+The sample output of the web page looks like
+```
+Hello Stats
+from port 8081 taking 92 ms for data size 37
+
+isl amo uorat pne yg bogfd lejnb wivipt yxazz oxu 
+spjespq ea en xnjkiyxd fwlwxzx ah zknkea qyxym urhnl pc 
+gpfmba emzygkdz updfipp vywae sabh vmyqudrc njfwsi asaarug uuq 
+qirggewk bpv azgshrtr mkkzr wsgnc uxozsx fxrqck ddxxa xyb 
+bgndxrp jynxdm zis fqinvb chq ythkyyd ka fcrk zjqhmzol cufnuvu uiaixez imhbxa 
+wrfmsaz lugrha aywob qvq yku zju ouk nyhy dfaig wqmwalp hpwa 
+tfu zg tbzktv ktt sn us nae ecalkko zlmcvfld tffsqxb rmugppir 
+ku cl eevcmiwe nqzoycc px trdaikt xfbitfox jxs hv lviy 
+bfmco tjfqq prnwwux whb ffskr ysmwpcux ljl ububavdc lh gkzsyqv whnvidei zit 
+bb fls anl ms aaocy mtfmqwmg ykgwma vblwtl nnmj yeq ixkiroqq 
+```
+
 
 ## Load Testing
 
