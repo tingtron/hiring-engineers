@@ -93,7 +93,7 @@ nvm alias default v10.3.0   # for future
 
 ## Libraries for Metrics Collection
 
-Agent Client
+### Agent Client
 
 The Agent client libraries typically do not measure statistics,
 they are tasked to communicate the collected statistics to the Agent.
@@ -105,7 +105,7 @@ We use sevaral criteria for the Agent client library
 
 A perfect choice to satisfy these criteria is the `hot-shots` library, which is a fork of `node-statsd` providing familiar API, with enhancements for DofStatsD features.
 
-Server Statistics
+### Server Statistics
 
 For web Server stats (requests per second, request time, number of errors etc) we considered the following approaches in addition to Node.js built-in functionality
  - [request](https://github.com/request/request) module
