@@ -118,14 +118,14 @@ follow [Understanding & Measuring HTTP Timings with Node.js](https://blog.rising
 
 ### Install hot-shots
 
-https://www.npmjs.com/package/hot-shots
-https://github.com/brightcove/hot-shots
+Following instructions at the [npm repository](https://www.npmjs.com/package/hot-shots) 
+and [Github](https://github.com/brightcove/hot-shots):
 
 ```
 $ npm install hot-shots
 ```
 
-Test in command line:
+Testing from the command line using an ad-hoc Node.js session:
 ```
 $ node
 ```
