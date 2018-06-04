@@ -1,13 +1,30 @@
+Here we will provide the answers to the Tech Writer challenge 
+for DataDog job application. This has proven to be a challenging task
+and at the same time, a good learning experience. It was also an interesting 
+and engaging way to demonstrate both writing skills and technical expertise. 
+Prior experience in related areas was really helpful in completing the varios 
+tasks in this challenge.
 
-## Prerequisites - Setup the environment
+## Prerequisites - Setting up the environment
 
-Using Windows 10
+The local machine used in this excercise is Windows 10 64-bit.
 
-1. Install Vagrant
+1. Installing Vagrant
 
-Following instructions for setting up [Vagrant with Ubuntu 12.04 VM](https://github.com/jeremy-lq/hiring-engineers/blob/tech-writer/README.md#vagrant),
+The virtual environment manager Vagrant was installed following instructions for setting up 
 
-installed at `C:\VM\Vagrant`
+[Vagrant with Ubuntu 12.04 VM](https://github.com/jeremy-lq/hiring-engineers/blob/tech-writer/README.md#vagrant),
+
+Note: this particular Linux version being LTS (long term support) 
+has proven to be somewhat outdated for the purposes of installing
+other products and libraries (See (troubleshooting)[blog/blog.md#troubleshooting] in our blog entry). 
+However, this was realized fairly far into
+the process of this excercise, that it was decided to look for workarounds
+rather than to change course. For more long-term testing environment, it
+woould be more feasible to use a later version of Linux environment.
+
+
+The folder for the installed at `C:\VM\Vagrant`
 
 2. Intall VirtualBox
 
