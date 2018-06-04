@@ -18,8 +18,8 @@ we will read about running Node.js >= 6.x on older distros.
 First ensure curl and certificates are up-to-date.
 This may help prevent SSL transport issues.
 ```shell
-    $ sudo apt-get update
-    $ sudo apt-get -y install curl apt-transport-https ca-certificates
+$ sudo apt-get update
+$ sudo apt-get -y install curl apt-transport-https ca-certificates
 ```
 Install Clang
 ```
