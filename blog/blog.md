@@ -11,13 +11,11 @@ For this example we are using Vagrant [hashicorp/precise64](https://github.com/j
 
 ### Installing Node.js
 
-Follow Installing Node.js via package manager - Debian and Ubuntu based Linux distributions
-    https://nodejs.org/en/download/package-manager/#debian-and-ubuntu-based-linux-distributions
+Following [Installing Node.js via package manager - Debian and Ubuntu based Linux distributions](https://nodejs.org/en/download/package-manager/#debian-and-ubuntu-based-linux-distributions).
 
 NOTE: Since we are using Ubuntu Precise, 
-we will read about running Node.js >= 6.x on older distros.
-    https://github.com/nodesource/distributions/blob/master/OLDER_DISTROS.md
-
+we will read about 
+[running Node.js >= 6.x on older distros](https://github.com/nodesource/distributions/blob/master/OLDER_DISTROS.md).
 
 First ensure curl and certificates are up-to-date.
 This may help prevent SSL transport issues.
@@ -79,12 +77,12 @@ On older Ubuntu distributions (precise), the versions of node and npm are outdat
 npm v1.1.4 and node v0.6.12.
 This may cause conflicts with npm registry, e.g. getting an error "failed to fetch from registry".
 
-Using `nvm` http://clubmate.fi/install-node-and-npm-to-a-ubuntu-box/
+To use `nvm` we follow instruction to [Install Node and npm to an Ubuntu box](http://clubmate.fi/install-node-and-npm-to-a-ubuntu-box/).
 
 This will install the more recent versions of node (v0.11.14) and npm (2.0.0).
 
 However, for more recent node versions, e.g. v10.3.0 (npm v6.1.0),
-see https://github.com/creationix/nvm
+see details for [Node Version Manager](https://github.com/creationix/nvm).
 
 If after reboot or new terminal session, the old version of node and npm is default, use
 ```
@@ -218,7 +216,10 @@ bb fls anl ms aaocy mtfmqwmg ykgwma vblwtl nnmj yeq ixkiroqq
 
 ## Load Testing
 
-Install loadtest. See https://www.npmjs.com/package/loadtest
+The command-line tool `loadtest` allows you to configure and tweak requests to simulate real world loads.
+It runs a load test on the selected HTTP or WebSockets URL. The API allows for easy integration in your own tests.
+
+To install loadtest, See the [details](https://www.npmjs.com/package/loadtest) at the npm repository.
 
 ```
 npm install -g loadtest
@@ -426,3 +427,10 @@ In particular the `hot-stats` module for Node.js was very helpful in seamless
 integration of Node.js into Datadog services. Big thanks to the contributors
 to the `hot-stats` and `node-statsd` projects!
 
+## References and Further Reading
+
+ * [Collecting Metrics Using StatsD, a Standard for Real-Time Monitoring](https://thenewstack.io/collecting-metrics-using-statsd-a-standard-for-real-time-monitoring/), Technology / Tutorials at The New Stack
+ * [Measure Anything, Measure Everything](https://codeascraft.com/2011/02/15/measure-anything-measure-everything/) by Ian Malpass at Code as Craft
+ * [How To Configure StatsD to Collect Arbitrary Stats for Graphite on Ubuntu 14.04 ](https://www.digitalocean.com/community/tutorials/how-to-configure-statsd-to-collect-arbitrary-stats-for-graphite-on-ubuntu-14-04) a Digital Ocean tutorial
+ * [From Noob To Docker On DigitalOcean With Nginx, Node.js, DataDog Logs, DogStatsD, And LetsEncrypt SSL Certificates ](https://www.bennadel.com/blog/3419-from-noob-to-docker-on-digitalocean-with-nginx-node-js-datadog-logs-dogstatsd-and-letsencrypt-ssl-certificates.htm) by Ben Nadel
+ 
