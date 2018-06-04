@@ -1,10 +1,11 @@
 
 # Managing Errors at Saturation Point in Node.js Using DogStatsD and Hot-Shot Client
 
+## Pre-Requisites
 
-Using Vagrant `hashicorp/precise64` template.
+Using Vagrant [hashicorp/precise64](https://github.com/jeremy-lq/hiring-engineers/blob/tech-writer/README.md#vagrant) template.
 
-## Installing Node.js
+### Installing Node.js
 
 Follow Installing Node.js via package manager - Debian and Ubuntu based Linux distributions
     https://nodejs.org/en/download/package-manager/#debian-and-ubuntu-based-linux-distributions
@@ -31,15 +32,15 @@ Install Node.js
 
 Note: if there are issue installing Node.js or later packages, see [Troubleshooting][#troubleshooting] below.
 
-Test with `hello.js`
+Test with [hello.js](hello.js).
 
 Forward VM ports to host in the `Vagrantfile` configuration
 ```
     config.vm.network "forwarded_port", guest: 8081, host: 8081, host_ip: "127.0.0.1"
 ```
-## Configure DogStatsD
+### Configure DogStatsD
 
-Follow https://docs.datadoghq.com/developers/dogstatsd/
+Follow [DogStatsD documentation](https://docs.datadoghq.com/developers/dogstatsd/).
 
 Enable and configure DogStatsD in `datadog.yaml`
 
@@ -51,7 +52,7 @@ Enable and configure DogStatsD in `datadog.yaml`
 
 Restart Agent.
 
-## Test a Custom Metric
+### Test a Custom Metric
 
 Using command line.
 ```
@@ -64,11 +65,31 @@ except, here we are sending a message directly to a local UDP server.
 This approach of sending to a UDP server is used by many community
 client libraries.
 
-Verify the custom metrics in DataDog UI
+Let's now verify the custom metrics were delivered in DataDog UI:
 
 ![Custom Metric from shell](010_Custom_Metric_Shell.png)
 
-## Choosing Libraries
+### Troubleshooting
+
+On older Ubuntu distributions (precise), the versions of node and npm are outdated:
+npm v1.1.4 and node v0.6.12.
+This may cause conflicts with npm registry, e.g. getting an error "failed to fetch from registry".
+
+Using `nvm` http://clubmate.fi/install-node-and-npm-to-a-ubuntu-box/
+
+This will install the more recent versions of node (v0.11.14) and npm (2.0.0).
+
+However, for more recent node versions, e.g. v10.3.0 (npm v6.1.0),
+see https://github.com/creationix/nvm
+
+If after reboot or new terminal session, the old version of node and npm is default, use
+```
+nvm ls
+nvm use v10.3.0
+nvm alias default v10.3.0   # for future
+```
+
+## Libraries for Metrics Collection
 
 Agent client
 
@@ -89,27 +110,8 @@ Web Server stats (requests per second, request time, number of errors etc)
 Note: to see how to collect stats for requests originated in Node.js itself,
 follow [Understanding & Measuring HTTP Timings with Node.js](https://blog.risingstack.com/measuring-http-timings-node-js/)
 
-## Troubleshooting
 
-On older Ubuntu distributions (precise), the versions of node and npm are outdated:
-npm v1.1.4 and node v0.6.12.
-This may cause conflicts with npm registry, e.g. getting an error "failed to fetch from registry".
-
-Using `nvm` http://clubmate.fi/install-node-and-npm-to-a-ubuntu-box/
-
-This will install the more recent versions of node (v0.11.14) and npm (2.0.0).
-
-However, for more recent node versions, e.g. v10.3.0 (npm v6.1.0),
-see https://github.com/creationix/nvm
-
-If after reboot or new terminal session, the old version of node and npm is default, use
-```
-nvm ls
-nvm use v10.3.0
-nvm alias default v10.3.0   # for future
-```
-
-## Install hot-shots
+### Install hot-shots
 
 https://www.npmjs.com/package/hot-shots
 https://github.com/brightcove/hot-shots
@@ -207,7 +209,6 @@ bfmco tjfqq prnwwux whb ffskr ysmwpcux ljl ububavdc lh gkzsyqv whnvidei zit
 bb fls anl ms aaocy mtfmqwmg ykgwma vblwtl nnmj yeq ixkiroqq 
 ```
 
-
 ## Load Testing
 
 Install loadtest. See https://www.npmjs.com/package/loadtest
@@ -220,7 +221,7 @@ Verify a simple test
 ```
 $ loadtest -n 200 -c 10 --rps 20 http://127.0.0.1:8081/
 ```
-See loadtest_test.txt
+See [loadtest_test.txt](loadtest_test.txt) for sample output.
 
 Note: to warm up Node.js server, the load should be increased gradually.
 The above parameters is a good starting point.
