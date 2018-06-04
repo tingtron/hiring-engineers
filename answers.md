@@ -12,12 +12,11 @@ The local machine used in this excercise is Windows 10 64-bit.
 1. Installing Vagrant
 
 The virtual environment manager Vagrant was installed following instructions for setting up 
-
 [Vagrant with Ubuntu 12.04 VM](https://github.com/jeremy-lq/hiring-engineers/blob/tech-writer/README.md#vagrant),
 
 Note: this particular Linux version being LTS (long term support) 
 has proven to be somewhat outdated for the purposes of installing
-other products and libraries (See (troubleshooting)[blog/blog.md#troubleshooting] in our blog entry). 
+other products and libraries (See [troubleshooting](blog/blog.md#troubleshooting) in our blog entry). 
 However, this was realized fairly far into
 the process of this excercise, that it was decided to look for workarounds
 rather than to change course. For more long-term testing environment, it
