@@ -313,11 +313,11 @@ the API is familiar to StatsD and Datadog community.
 So integration is easy and intuitive.
 
 We will be using the following Datadog metrics:
- * counter: request.count
- * counter: error.count
- * timing:  response.time
- * gauge:   reponse.size
- * tag: load_rate: 'low' | 'high'
+ * counter: `request.count`
+ * counter: `error.count`
+ * timing:  `response.time`
+ * gauge:   `reponse.size`
+ * tag: `node_js`, `load_rate:` `'low'` | `'high'`
 
 First we instanciate the `DogStatsD` client with optional common parameters
 ```javascript
