@@ -16,13 +16,11 @@ The local machine used in this excercise is Windows 10 64-bit.
 The virtual environment manager Vagrant was installed following instructions for setting up 
 [Vagrant with Ubuntu 12.04 VM](https://github.com/jeremy-lq/hiring-engineers/blob/tech-writer/README.md#vagrant),
 
-Note: this particular Linux version being LTS (long term support) 
-has proven to be somewhat outdated for the purposes of installing
+Note: this particular Linux version, being LTS (long term support),
+has proven somewhat outdated for the purposes of installing
 other products and libraries (See [troubleshooting](blog/blog.md#troubleshooting) in our blog entry). 
-However, this was realized fairly far into
-the process of this excercise, that it was decided to look for workarounds
-rather than to change course. For more long-term testing environment, it
-woould be more feasible to use a later version of Linux environment.
+Unfortunately, this was realized in the middle of the exercise. So rather than changing course, a workaround was decided. 
+For a stable and long-term testing environment, a later version of the Linux setup should be used.
 
 The folder for the installed at `C:\VM\Vagrant`
 
@@ -34,6 +32,7 @@ following instructions at [Download VirtualBox](https://www.virtualbox.org/wiki/
 3. Rebooting was required to apply changes from previous installations.
 
 4. Spin-up default VM
+
 First we created an instance of our VM using the Vagrant template `hashicorp/precise64`, which is Ubuntu 64 12.X LTS.
 ```
     > md c:\VM\test
