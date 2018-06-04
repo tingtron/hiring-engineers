@@ -429,6 +429,15 @@ to the `hot-stats` and `node-statsd` projects!
 
 ## References and Further Reading
 
+### Datadog Documentation
+* [Datadog getting started](https://docs.datadoghq.com/getting_started/)
+* [Guide to graphing in Datadog](http://docs.datadoghq.com/graphing/)
+* [Guide to monitoring in Datadog](https://docs.datadoghq.com/monitors/)
+* [Guide to the Agent](http://docs.datadoghq.com/agent/)
+* [Datadog API](https://docs.datadoghq.com/api/)
+* [Datadog Help Center](https://help.datadoghq.com/hc/en-us)
+
+### Related Blog Posts and Articles
  * [Collecting Metrics Using StatsD, a Standard for Real-Time Monitoring](https://thenewstack.io/collecting-metrics-using-statsd-a-standard-for-real-time-monitoring/), Technology / Tutorials at The New Stack
  * [Measure Anything, Measure Everything](https://codeascraft.com/2011/02/15/measure-anything-measure-everything/) by Ian Malpass at Code as Craft
  * [How To Configure StatsD to Collect Arbitrary Stats for Graphite on Ubuntu 14.04 ](https://www.digitalocean.com/community/tutorials/how-to-configure-statsd-to-collect-arbitrary-stats-for-graphite-on-ubuntu-14-04) a Digital Ocean tutorial
