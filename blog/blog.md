@@ -298,6 +298,50 @@ which results in tabular console output:
 ![Console stats](060_Hot_Start.png)
 
 
+## Integrating with DogStatsD Using hot-shots
+
+Thanks to the design insight on the `hot-shots` library,
+the API is familiar to StatsD and DataDog community.
+So integration is easy and intuitive.
+
+We will be using the following DataDog metrics:
+ * counter: request.count
+ * counter: error.count
+ * timing:  response.time
+ * gauge:   reponse.size
+ * tag: load_rate: 'low' | 'high'
+
+First we instanciate the `DogStatsD` client with optional common parameters
+```javascript
+var StatsD = require('hot-shots'),
+    statsD = new StatsD({
+        prefix: 'my_node.',
+        globalTags: { node_js: '', load_rate: 'low' }
+    });
+```
+
+We integrate capturing response size with `request-stats` reporting mechanism
+```javascript
+function report(s) {
+    ...
+    statsD.gauge('reponse.size', s.res.bytes);
+    statsD.timing('response.time', s.time);
+}
+```
+
+Finally, we will be capturing error count for every situation when the
+ration of the allocated and actual processing time exceed a certain threashold:
+```javascript
+    var start = Date.now()
+    setTimeout(function() {
+        var actual = Date.now() - start;
+        var r = t / actual;
+        if (r < 0.10) {  // threashold: 0.10 automated load testing, 0.50 manual browser testing
+            console.error(`Respose for ${t} ms takes ${actual} ms ratio ${(r*100).toFixed(2)}%`);
+            statsD.increment('error.count');
+        ...
+    }, t);  //  t is the allocated processing time
+```
 
 ## Analysis of Pre-Error Metrics
 
@@ -309,5 +353,7 @@ Creating Monitor Warnings, which look into such related metrics,
 would allow alerting about potential server overload and allow
 taking preventing measures to avoid errors, such as increasing
 server resources or improving load balancing.
+
+## Acknowledgements
 
 
