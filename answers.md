@@ -1,10 +1,11 @@
-Here we will provide the answers to the Tech Writer challenge 
-for Datadog job application. This has proven to be a challenging task
-and at the same time, a good learning experience. It was also an interesting 
-and engaging way to demonstrate both writing skills and technical expertise. 
-The detailed and easy to follow documentation at the Datadog web site,
-combined with prior experience in related areas were really helpful 
-in completing the varios tasks in this challenge.
+Here are the answers to the Tech Writer challenge for the Datadog job application. 
+This was a hard-won challenge that lead to a valuable learning experience. 
+The task purposed was a compelling approach to demonstrate both writing 
+skills and technical expertise.
+
+The detailed, easy-to-follow documentation found on the Datadog website, 
+combined with prior experience in related areas, were essential to 
+completing the varied tasks presented in the challenge.
 
 ## Prerequisites - Setting up the environment
 
