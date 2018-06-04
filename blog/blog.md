@@ -17,7 +17,7 @@ we will read about running Node.js >= 6.x on older distros.
 
 First ensure curl and certificates are up-to-date.
 This may help prevent SSL transport issues.
-```
+```shell
     $ sudo apt-get update
     $ sudo apt-get -y install curl apt-transport-https ca-certificates
 ```
@@ -154,7 +154,7 @@ infrastructure and veify the correct topology assumptions.
 
 Below we will look into some details. Complete source of the Node.js sample app is
 availalbe here:
- * [stats_hot.js](stats_hot.js)
+ * View source: [stats_hot.js](stats_hot.js)
 
 To model real life behavior, we will use a random complexity parameter _(n)_,
 which will determine the size and time of the response.
@@ -166,7 +166,7 @@ The time will be defined as _square_ of the complexity parameter, _O(n<sup>2</su
 Here's the section of code, responsible for generating the output
 and determining the size and time based on random complexity.
 
-```
+```javascript
 function rnd(n, m) {  // inclusive
     return n + Math.floor(Math.random() * (m - n + 1)); 
 }
@@ -264,12 +264,39 @@ npm install request-stats --save
 Test using a simple web app and console output.
 
 The statistics captured by `request-stats` are represented in nested JSON structures.
+
+![Request_Stats](050_Request_Stats.png)
+
 The statistics we are interested in are:
  * response size
  * response time
  * error count
 
-![Request_Stats](050_Request_Stats.png)
+In our code, the statistics will be captured as follows:
+```javascript
+var requestStats = require('request-stats')
+    requestStats(server, function (stats) {
+        // called every time request completes
+
+        report(stats);
+        // if (!stats.ok) console.log(stats);
+    })
+
+var count = 1;
+function report(s) {
+    console.log(sprintf(
+            '%4d %4s %3s  %4d %6s %6d %6s',
+            ++count, s.time, s.ok?'OK':'ERR', s.req.bytes, s.req.method, s.res.bytes, s.res.status));
+
+    statsD.gauge('reponse.size', s.res.bytes);
+    statsD.timing('response.time', s.time);
+}
+```
+
+which results in tabular console output:
+
+![Console stats](060_Hot_Start.png)
+
 
 
 ## Analysis of Pre-Error Metrics
