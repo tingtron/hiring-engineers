@@ -1,0 +1,23 @@
+vagrant@precise64:~/nodes$ loadtest -n 200 -c 10 --rps 20 http://127.0.0.1:8081/
+[Fri Jun 01 2018 15:36:39 GMT+0000 (UTC)] INFO Requests: 0 (0%), requests per second: 0, mean latency: 0 ms
+[Fri Jun 01 2018 15:36:44 GMT+0000 (UTC)] INFO Requests: 94 (47%), requests per second: 19, mean latency: 2.5 ms
+[Fri Jun 01 2018 15:36:49 GMT+0000 (UTC)] INFO Requests: 194 (97%), requests per second: 20, mean latency: 2.5 ms
+[Fri Jun 01 2018 15:36:49 GMT+0000 (UTC)] INFO
+[Fri Jun 01 2018 15:36:49 GMT+0000 (UTC)] INFO Target URL:          http://127.0.0.1:8081/
+[Fri Jun 01 2018 15:36:49 GMT+0000 (UTC)] INFO Max requests:        200
+[Fri Jun 01 2018 15:36:49 GMT+0000 (UTC)] INFO Concurrency level:   10
+[Fri Jun 01 2018 15:36:49 GMT+0000 (UTC)] INFO Agent:               none
+[Fri Jun 01 2018 15:36:49 GMT+0000 (UTC)] INFO Requests per second: 20
+[Fri Jun 01 2018 15:36:49 GMT+0000 (UTC)] INFO
+[Fri Jun 01 2018 15:36:49 GMT+0000 (UTC)] INFO Completed requests:  200
+[Fri Jun 01 2018 15:36:49 GMT+0000 (UTC)] INFO Total errors:        0
+[Fri Jun 01 2018 15:36:49 GMT+0000 (UTC)] INFO Total time:          10.316838895 s
+[Fri Jun 01 2018 15:36:49 GMT+0000 (UTC)] INFO Requests per second: 19
+[Fri Jun 01 2018 15:36:49 GMT+0000 (UTC)] INFO Mean latency:        2.5 ms
+[Fri Jun 01 2018 15:36:49 GMT+0000 (UTC)] INFO
+[Fri Jun 01 2018 15:36:49 GMT+0000 (UTC)] INFO Percentage of the requests served within a certain time
+[Fri Jun 01 2018 15:36:49 GMT+0000 (UTC)] INFO   50%      1 ms
+[Fri Jun 01 2018 15:36:49 GMT+0000 (UTC)] INFO   90%      4 ms
+[Fri Jun 01 2018 15:36:49 GMT+0000 (UTC)] INFO   95%      5 ms
+[Fri Jun 01 2018 15:36:49 GMT+0000 (UTC)] INFO   99%      6 ms
+[Fri Jun 01 2018 15:36:49 GMT+0000 (UTC)] INFO  100%      14 ms (longest request)
