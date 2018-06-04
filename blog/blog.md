@@ -1,9 +1,13 @@
 
 # Managing Errors at Saturation Point in Node.js Using DogStatsD and Hot-Shot Client
 
+If you’re here it’s because your looking for the secret sauce to improve reliability of your web based product. You can follow along without the pre-requisites but it will not make as much sense unless you have all the components. As with any programming language, platform, or tool that doesn’t come bundled, getting up and running takes an initial setup. Node.js has a far better installation experience than most tools or platforms; just run the installer and you’re good to go.
+
+The Hot-shots library is used as a use case here because it integrates well with Node.js and the statics collection methods. We’re choosing something other than Python because we wanted to show another library provided by Datadog community, which might not be as well-know to wider solution providers audience.
+
 ## Pre-Requisites
 
-Using Vagrant [hashicorp/precise64](https://github.com/jeremy-lq/hiring-engineers/blob/tech-writer/README.md#vagrant) template.
+For this example we are using Vagrant [hashicorp/precise64](https://github.com/jeremy-lq/hiring-engineers/blob/tech-writer/README.md#vagrant) template.
 
 ### Installing Node.js
 
@@ -91,21 +95,24 @@ nvm alias default v10.3.0   # for future
 
 ## Libraries for Metrics Collection
 
-Agent client
+Agent Client
 
-- Node.js
-- Standard (StatsD vs custom API)
-- API features
+The Agent client libraries typically do not measure statistics,
+they are tasked to communicate the collected statistics to the Agent.
 
-Note: Agent client libraries typically do not collect statistics,
-they only communicate statistics to the Agent.
+We use sevaral criteria for the Agent client library
+- Integration with Node.js
+- Providing familiar standard interface such as StatsD to facilicate adoption and adapting of existing code base, as opposed to any custom API
+- API features, which provide rich reporting functionality (gauges, timing, counters) as well as flexible configuration, e.g. by setting common parameters, such as tags or prefixes from all communications.
 
-Server statistics
+A perfect choice to satisfy these criteria is the `hot-shots` library, which is a fork of `node-statsd` providing familiar API, with enhancements for DofStatsD features.
 
-Web Server stats (requests per second, request time, number of errors etc)
+Server Statistics
 
+For web Server stats (requests per second, request time, number of errors etc) we considered the following approaches in addition to Node.js built-in functionality
  - [request](https://github.com/request/request) module
  - [request-stats](https://github.com/watson/request-stats) package 
+and chose to go along with `request-stats`, as the most flexible and straight-forward approach in terms of integration (call-back interface) and API (granulated structures for metrics).
 
 Note: to see how to collect stats for requests originated in Node.js itself,
 follow [Understanding & Measuring HTTP Timings with Node.js](https://blog.risingstack.com/measuring-http-timings-node-js/)
