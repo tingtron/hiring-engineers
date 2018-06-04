@@ -240,7 +240,7 @@ increased resource consumption in the DataDog System Dashboard.
 In particular, System Load, CPU Usage and System Memory show
 visible increase.
 
-![Load Saturation](040_Load_Saturation.png)
+![Load Saturation](041_Load_Saturation.png)
 
 We should exect that after further increase of the load, the server
 performance would suffer, and errors will start to appear.
