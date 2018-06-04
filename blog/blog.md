@@ -1,11 +1,11 @@
 
 # Managing Errors at Saturation Point in Node.js Using DogStatsD and Hot-Shot Client
 
-If you’re here it’s because your looking for the secret sauce to improve reliability of your web based product. You can follow along without the pre-requisites but it will not make as much sense unless you have all the components. As with any programming language, platform, or tool that doesn’t come bundled, getting up and running takes an initial setup. Node.js has a far better installation experience than most tools or platforms; just run the installer and you’re good to go.
+If you’re here it’s because your looking for the secret sauce to improve reliability of your web-based product. You can follow along without the prerequisites but it will not make as much sense unless you have all the components. As with any programming language, platform, or tool that doesn’t come bundled, getting up and running takes an initial setup. Node.js has a far better installation experience than most tools or platforms; just run the installer and you’re good to go.
 
 The Hot-shots library is used as a use case here because it integrates well with Node.js and the statics collection methods. We’re choosing something other than Python because we wanted to show another library provided by Datadog community, which might not be as well-know to wider solution providers audience.
 
-## Pre-Requisites
+## Prerequisites
 
 For this example we are using Vagrant [hashicorp/precise64](https://github.com/jeremy-lq/hiring-engineers/blob/tech-writer/README.md#vagrant) template.
 
@@ -107,7 +107,7 @@ A perfect choice to satisfy these criteria is the `hot-shots` library, which is 
 
 ### Server Statistics
 
-For web Server stats (requests per second, request time, number of errors etc) we considered the following approaches in addition to Node.js built-in functionality
+For web Server stats (requests per second, request time, number of errors, etc.) we considered the following approaches in addition to Node.js built-in functionality:
  - [request](https://github.com/request/request) module
  - [request-stats](https://github.com/watson/request-stats) package 
 and chose to go along with `request-stats`, as the most flexible and straight-forward approach in terms of integration (call-back interface) and API (granulated structures for metrics).
@@ -219,7 +219,7 @@ bb fls anl ms aaocy mtfmqwmg ykgwma vblwtl nnmj yeq ixkiroqq
 The command-line tool `loadtest` allows you to configure and tweak requests to simulate real world loads.
 It runs a load test on the selected HTTP or WebSockets URL. The API allows for easy integration in your own tests.
 
-To install loadtest, See the [details](https://www.npmjs.com/package/loadtest) at the npm repository.
+To install `loadtest`, see the [details](https://www.npmjs.com/package/loadtest) at the npm repository.
 
 ```
 npm install -g loadtest
@@ -250,16 +250,16 @@ visible increase.
 
 ![Load Saturation](041_Load_Saturation.png)
 
-We should exect that after further increase of the load, the server
+We should expect that after further increase of the load, the server
 performance would suffer, and errors will start to appear.
 However, to get more specific insight into performance of individual
-requests, such as reposne time and error counts, we need to capture
-request procecing statistics.
+requests, such as reponse time and error counts, we need to capture
+certain request-processing statistics.
 
-Note: there are several ways to capture web request processing performance,
-such as in transport layer, etc. However, here we'll be capturing
-statistics from inside the Node.js code itself. So we can configure
-the complexity of responses (time and size in particular), and error
+Note: there are several ways for capturing performance indicators of a web application,
+such as in the transport layer, load testing client, etc. However, here we'll be capturing
+statistics from inside the Node.js code itself. Doing so we can configure
+the complexity of responses (time and size in particular), and the error
 triggering mechanism.
 
 ## Collecting Node.js Stats
