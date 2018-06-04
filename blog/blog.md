@@ -366,7 +366,7 @@ metrics tags, which will help in visualization:
 
  * Higher load rate (after saturation), with tag: `load_rate: high`
    ```
-   loadtest -n 2000 -c 500 --rps 1000 http://127.0.0.1:8081/
+   $ loadtest -n 4000 -c 500 --rps 1000 http://127.0.0.1:8081/
    ```
 
 Next we observe the generated DogStatsD metrics in the Datadog Metrics Explorer:
