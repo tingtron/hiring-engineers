@@ -2,7 +2,6 @@
 # Managing Errors at Saturation Point in Node.js Using DogStatsD and Hot-Shot Client
 
 
-
 Using Vagrant `hashicorp/precise64` template.
 
 ## Installing Node.js
@@ -411,4 +410,11 @@ of the event.
 
 ## Acknowledgements
 
+Using DataDog and DogStatsD wouldn't be as easy and productive without
+numerous community contributed integrations and libraries created for
+virtually any modern cloud computing infrastructure and programming language.
+
+In particular the `hot-stats` module for Node.js was very helpful in seamless
+integration of Node.js into DataDog services. Big thanks to the contributors
+to the `hot-stats` and `node-statsd` projects!
 
