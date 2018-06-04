@@ -240,7 +240,7 @@ $ loadtest -n 2000 -c 200 --rps 500 http://127.0.0.1:8081/
 ```
 Higher load rate (after saturation)
 ```
-loadtest -n 2000 -c 500 --rps 1000 http://127.0.0.1:8081/
+$ loadtest -n 4000 -c 500 --rps 1000 http://127.0.0.1:8081/
 ```
 
 After increasing the load on the test web page, we can observe
