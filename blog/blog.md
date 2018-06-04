@@ -18,8 +18,8 @@ we will read about running Node.js >= 6.x on older distros.
 First ensure curl and certificates are up-to-date.
 This may help prevent SSL transport issues.
 ```shell
-$ sudo apt-get update
-$ sudo apt-get -y install curl apt-transport-https ca-certificates
+    $ sudo apt-get update
+    $ sudo apt-get -y install curl apt-transport-https ca-certificates
 ```
 Install Clang
 ```
@@ -330,7 +330,7 @@ function report(s) {
 ```
 
 Finally, we will be capturing error count for every situation when the
-ration of the allocated and actual processing time exceed a certain threashold:
+ratio of the allocated and actual processing time exceed a certain threashold:
 ```javascript
     var start = Date.now()
     setTimeout(function() {
@@ -343,6 +343,40 @@ ration of the allocated and actual processing time exceed a certain threashold:
     }, t);  //  t is the allocated processing time
 ```
 
+## Visualizing Saturation Point with DataDog Dashboard Metrics
+
+Applying the same load testing as shown (earlier)[#load-testing],
+we determine the saturation point as such when errors first start to appear.
+
+Then we excute the pre- and post- saturation load tests with different
+metrics tags, which will help in visualization:
+
+ * Lower load rate (before saturation), with tag: `load_rate: low`
+   ```
+   $ loadtest -n 2000 -c 200 --rps 500 http://127.0.0.1:8081/
+   ```
+
+ * Higher load rate (after saturation), with tag: `load_rate: high`
+   ```
+   loadtest -n 2000 -c 500 --rps 1000 http://127.0.0.1:8081/
+   ```
+
+Next we observe the generated DogStatsD metrics in the DataDog Metrics Explorer:
+
+![Metric Explorer](070_Hot_Metric_Explorer.png)
+
+To help illustrate the relationship between various metrics around the saturation point,
+we create a custom Dashbaord "My Node Stats".
+
+The `response.time` chart show high load in red, indicating 75ms line between high and low load areas.
+
+The `error.count` chart show high error count area in orange, and mostly no errors in low saturation area.
+
+![Custom Stats Dashboard.png](080_Stats_Dashboard.png)
+
+Note: the spikes of errors at the start of each load period indicate warm-up problem
+of our configuration after server restart -- a good insight for real life applications.
+
 ## Analysis of Pre-Error Metrics
 
 Looking at related metrics, such as requests rate, system load etc, 
@@ -353,6 +387,27 @@ Creating Monitor Warnings, which look into such related metrics,
 would allow alerting about potential server overload and allow
 taking preventing measures to avoid errors, such as increasing
 server resources or improving load balancing.
+
+## Error Events created by DataGod Monitor
+
+It is a good idea to receive a notification that error rate exceeds a certain threashold,
+to incidate potential problems and allow responding to the situation.
+
+DataDog has an easy to use interface to create complex monitoring scenarios.
+Here we create a monitor for error events when the number of errors exceeds 500.
+
+![Error Monitor](090_Hot_Error_Monitor.png)
+
+Reulsting Error Events and following automatic resoltution notification appear in the
+the DataDog Events area.
+
+![Error Event](092_Hot_Error_Event.png)
+
+In addition, error events can be investigated to observe related metrics in the vicinity
+of the event.
+
+![Error Details](095_Hot_Error_Details.png)
+
 
 ## Acknowledgements
 
