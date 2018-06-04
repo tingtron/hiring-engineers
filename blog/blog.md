@@ -152,6 +152,10 @@ application with configurable processing and resource consumption parameters.
 This would allow dry-running the environment to verify the instrumentation
 infrastructure and veify the correct topology assumptions.
 
+Below we will look into some details. Complete source of the Node.js sample app is
+availalbe here:
+ * [stats_hot.js](stats_hot.js)
+
 To model real life behavior, we will use a random complexity parameter _(n)_,
 which will determine the size and time of the response.
 
