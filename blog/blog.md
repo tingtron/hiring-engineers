@@ -406,7 +406,7 @@ Here we create a monitor for error events when the number of errors exceeds 500.
 
 ![Error Monitor](090_Hot_Error_Monitor.png)
 
-Reulsting Error Events and following automatic resoltution notification appear in the
+The resulsting Error Events and the related automatic Error Resolution notification appear in the
 the Datadog Events area.
 
 ![Error Event](092_Hot_Error_Event.png)
