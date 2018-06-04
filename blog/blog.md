@@ -59,13 +59,13 @@ Using command line.
     $ echo -n "custom_metric:20|g|#shell" >/dev/udp/localhost/8125
 ```
 
-Note: this is similar to using DataDog agent API, as in Python,
+Note: this is similar to using Datadog agent API, as in Python,
 except, here we are sending a message directly to a local UDP server.
  
 This approach of sending to a UDP server is used by many community
 client libraries.
 
-Let's now verify the custom metrics were delivered in DataDog UI:
+Let's now verify the custom metrics were delivered in Datadog UI:
 
 ![Custom Metric from shell](010_Custom_Metric_Shell.png)
 
@@ -137,7 +137,7 @@ client.event('my_title', 'description')
 client.increment('my_counter')
 ```
 
-Verify the custom metrics in DataDog UI
+Verify the custom metrics in Datadog UI
 
 ![Custom Counters from Node.js](020_Custom_Counters_Node.png)
 
@@ -236,7 +236,7 @@ loadtest -n 2000 -c 500 --rps 1000 http://127.0.0.1:8081/
 ```
 
 After increasing the load on the test web page, we can observe
-increased resource consumption in the DataDog System Dashboard.
+increased resource consumption in the Datadog System Dashboard.
 In particular, System Load, CPU Usage and System Memory show
 visible increase.
 
@@ -301,10 +301,10 @@ which results in tabular console output:
 ## Integrating with DogStatsD Using hot-shots
 
 Thanks to the design insight on the `hot-shots` library,
-the API is familiar to StatsD and DataDog community.
+the API is familiar to StatsD and Datadog community.
 So integration is easy and intuitive.
 
-We will be using the following DataDog metrics:
+We will be using the following Datadog metrics:
  * counter: request.count
  * counter: error.count
  * timing:  response.time
@@ -343,7 +343,7 @@ ratio of the allocated and actual processing time exceed a certain threashold:
     }, t);  //  t is the allocated processing time
 ```
 
-## Visualizing Saturation Point with DataDog Dashboard Metrics
+## Visualizing Saturation Point with Datadog Dashboard Metrics
 
 Applying the same load testing as shown (earlier)[#load-testing],
 we determine the saturation point as such when errors first start to appear.
@@ -361,7 +361,7 @@ metrics tags, which will help in visualization:
    loadtest -n 2000 -c 500 --rps 1000 http://127.0.0.1:8081/
    ```
 
-Next we observe the generated DogStatsD metrics in the DataDog Metrics Explorer:
+Next we observe the generated DogStatsD metrics in the Datadog Metrics Explorer:
 
 ![Metric Explorer](070_Hot_Metric_Explorer.png)
 
@@ -388,18 +388,18 @@ would allow alerting about potential server overload and allow
 taking preventing measures to avoid errors, such as increasing
 server resources or improving load balancing.
 
-## Error Events created by DataGod Monitor
+## Error Events created by Datadog Monitor
 
 It is a good idea to receive a notification that error rate exceeds a certain threashold,
 to incidate potential problems and allow responding to the situation.
 
-DataDog has an easy to use interface to create complex monitoring scenarios.
+Datadog has an easy to use interface to create complex monitoring scenarios.
 Here we create a monitor for error events when the number of errors exceeds 500.
 
 ![Error Monitor](090_Hot_Error_Monitor.png)
 
 Reulsting Error Events and following automatic resoltution notification appear in the
-the DataDog Events area.
+the Datadog Events area.
 
 ![Error Event](092_Hot_Error_Event.png)
 
@@ -411,11 +411,11 @@ of the event.
 
 ## Acknowledgements
 
-Using DataDog and DogStatsD wouldn't be as easy and productive without
+Using Datadog and DogStatsD wouldn't be as easy and productive without
 numerous community contributed integrations and libraries created for
 virtually any modern cloud computing infrastructure and programming language.
 
 In particular the `hot-stats` module for Node.js was very helpful in seamless
-integration of Node.js into DataDog services. Big thanks to the contributors
+integration of Node.js into Datadog services. Big thanks to the contributors
 to the `hot-stats` and `node-statsd` projects!
 
