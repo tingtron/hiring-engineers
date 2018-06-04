@@ -164,7 +164,7 @@ Provide `tags` section:
 
 2. Restart Agent (see [above](#restart-agent))
 
-3. Show Host and its tags on the Host Map page in Datadog
+3. Show Host and its tags on the [Host Map](https://app.datadoghq.com/infrastructure/map) page in Datadog
 
 ![Tags in Hosts](030_Tags_done.png)
 
@@ -239,7 +239,7 @@ show tables;
 select * from cats;
 ```
 
-5. Show database metrics
+5. Show database metrics in [MySQL - Overview](https://app.datadoghq.com/dash/integration/12/mysql---overview?live=false&page=0&is_auto=false&from_ts=1527209956399&to_ts=1527242282882&tile_size=m) dashboard:
 
 ![MySql Metrics](040_MySql_done.png)
 
@@ -307,7 +307,7 @@ select * from cats;
               Average Execution Time : 0ms
 ```
 
-The resulting metric is available in Metrics UI
+The resulting metric is available in [Metrics Explorer](https://app.datadoghq.com/metric/explorer?live=false&page=0&is_auto=false&from_ts=1527807531464&to_ts=1528059031473&tile_size=m&exp_metric=my_metric&exp_scope=&exp_agg=avg&exp_row_type=metric)
 
 ![Check Metric](050_Check_Metric.png)
 
@@ -349,14 +349,14 @@ Get API_KEY and APP_KEY using [Integrations / API Keys](https://app.datadoghq.co
 
    View: [create_timeboard.py](create_timeboard.py)
 
-3. Capture snapshot in Dashboard UI
+3. Capture snapshot in the [API Timeboard](https://app.datadoghq.com/dash/820500/api-timeboard?live=false&page=0&is_auto=false&from_ts=1527236026000&to_ts=1527236427416&tile_size=m) Dashboard:
 
 ![API Timeboard 5m](090_API_Timeboard_5m.png)
 
 The snapshot is captured in the Dashboard tile using the "camera" icon.
 The target user is indicated with `@` notation, which promts with available email address.
 
-The resulting snapshot can be found in the Events UI:
+The resulting snapshot can be found in the [Events](https://app.datadoghq.com/event/stream) UI:
 
 ![Dashboard Snapshot](100_Dashboard_Snapshot.png)
 
