@@ -1,9 +1,10 @@
 Here we will provide the answers to the Tech Writer challenge 
-for DataDog job application. This has proven to be a challenging task
+for Datadog job application. This has proven to be a challenging task
 and at the same time, a good learning experience. It was also an interesting 
 and engaging way to demonstrate both writing skills and technical expertise. 
-Prior experience in related areas was really helpful in completing the varios 
-tasks in this challenge.
+The detailed and easy to follow documentation at the Datadog web site,
+combined with prior experience in related areas were really helpful 
+in completing the varios tasks in this challenge.
 
 ## Prerequisites - Setting up the environment
 
@@ -22,51 +23,62 @@ the process of this excercise, that it was decided to look for workarounds
 rather than to change course. For more long-term testing environment, it
 woould be more feasible to use a later version of Linux environment.
 
-
 The folder for the installed at `C:\VM\Vagrant`
 
-2. Intall VirtualBox
+2. Intalling VirtualBox
 
-Following instructions at [Download VirtualBox](https://www.virtualbox.org/wiki/Downloads)
+The VM manager software VirtualBox was installed
+following instructions at [Download VirtualBox](https://www.virtualbox.org/wiki/Downloads).
 
-3. Reboot
+3. Rebooting was required to apply changes from previous installations.
 
-4. Spin-up default VM:
+4. Spin-up default VM
+First we created an instance of our VM using the Vagrant template `hashicorp/precise64`, which is Ubuntu 64 12.X LTS.
 ```
     > md c:\VM\test
     > cd c:\VM\test
-    > vagrant init hashicorp/precise64
+    > vagrant init 
 ```
-Note: this is Ubuntu 64 12.X LTS
 
-Increase memory in `c:\VM\test\Vagrantfile`:
+Observing the allocated resources in the VirtualBox Manager,
+in order to prevent slow down or other performance issues affecting our tests,
+the memory was increased in `c:\VM\test\Vagrantfile`:
 ```
       config.vm.provider "virtualbox" do |vb|
         vb.memory = "2048"   # Mb was "398"
       end
 ```
-Start and connect shell:
+Next we start and connect to the shell of our VM:
 ```
     > vagrant up
 
     > vargant ssh
 ```
-Note: SSH username: `vagrant / vagrant`
+Note: The default username `vagrant / vagrant` is used by SSH session,
+and no password is required, since the authentication is performed
+using the locally stored encrypted key.
 
-5. Linux shell update
+5. Linux environment update
 
-Install curl
+Before proceeding, we update the command-line installation management
+for the Linux environment and make sure we have the necessary tools,
+such as `curl`.
+
 ```
     $ sudo apt-get update
     $ sudo apt-get install curl
 ```
 
-### Install Datadog
+### Installing Datadog
+
+We follow the instructions for installing the Datagod Agent on Ubuntu environment
+at [Installing on Ubuntu](https://app.datadoghq.com/account/settings#agent/ubuntu):
+
 ```
     $ export DD_API_KEY=baa4d41e9cbdd3ffc335a6acc3476071 
-    $ bash -c "$(curl -L https://raw.githubusercontent.com/DataDog/datadog-agent/master/cmd/agent/install_script.sh)"
+    $ bash -c "$(curl -L https://raw.githubusercontent.com/Datadog/datadog-agent/master/cmd/agent/install_script.sh)"
 ```
-Upon successful installation:
+Upon successful installation, we note the console output:
 ```
     ...
         * Adding your API key to the Agent configuration: /etc/datadog-agent/datadog.yaml
@@ -86,7 +98,7 @@ Upon successful installation:
 
             sudo start datadog-agent
 ```
-Verify (after stopping)
+The after stopping the agent, we verify a successful start again:
 ```
     $ sudo start datadog-agent
     datadog-agent start/running, process 3023
@@ -105,17 +117,20 @@ Verify (after stopping)
         /opt/datadog-agent/embedded/bin/trace-agent --config /etc/datadog-agent/datadog.yaml --pid /opt/datadog-agent/run/trace-agent.pid
 ```
 
-Check logs if there are error or for future reference:
+We also note the location of the logs if there are errors and for future reference:
 ```
     /var/log/datadog/agent.log
 ```
 
-### Restart Agent
-Used when editing the main configuration file and the agents':
+### Restarting the Agent
+
+Restarting is necessary when when editing the main configuration file and that of the Agent:
+
  * `/etc/datadog-agent/datadog.yaml`
  * `/etc/datadog-agent/conf.d/mysql.d/conf.yaml`
  * etc
 
+To perform a restart,
 ```
     $ sudo service datadog-agent restart
         ... process 16581
@@ -161,11 +176,11 @@ Provide `tags` section:
     $ sudo apt-get install mysql-server
         root user: no passowrd
 ```
-Note: mysql_secure_installation is not executed
+Note: mysql_secure_installation is not executed for the purposes of this excercise.
 
 2. Sample MySQL database
 
-Using instructions under [Connecting to the MySQL Server with the mysql Client](https://dev.mysql.com/doc/mysql-getting-started/en/#mysql-getting-started-connecting)
+We are using instructions under [Connecting to the MySQL Server with the mysql Client](https://dev.mysql.com/doc/mysql-getting-started/en/#mysql-getting-started-connecting).
 
 The following commands were used to establish a sample instance and execute typical session:
 ```
@@ -211,10 +226,11 @@ Restart Agent (see [above](#restart-agent))
 
 4. Sample MySQL sessions
 
-Make more connections:
+Make more connections from the Linux shell using:
 ```
     $ mysql -u root
 ```
+
 Execute sample session to generate metrics:
 ```
 show databases;
@@ -360,5 +376,4 @@ the normal area is; the wider the area, the fewer anomalies it will determine.
 
 The Datadog community has written a substantial number of high quality integrations and libraries. Select one from [this page](https://docs.datadoghq.com/developers/libraries/). With this selection in mind, write a blog post that announces your selection and explains the benefits it offers our users/community. The post should cover installation, configuration, usage, and best practices along with code samples where applicable. You should also thank the contributor for their effort.
 
-Blog post: ...
-
+For the blog post to answer this challenge, please see our article [Managing Errors at Saturation Point in Node.js Using DogStatsD and Hot-Shot Client](blog/blog.md).
