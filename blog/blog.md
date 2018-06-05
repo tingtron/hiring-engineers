@@ -100,7 +100,7 @@ they are tasked to communicate the collected statistics to the Agent.
 
 We use several criteria for the Agent client library
 - Integration with Node.js
-- Providing familiar standard interface such as StatsD to facilicate adoption and adapting of existing code base, as opposed to any custom API
+- Providing familiar standard interface such as StatsD to facilitate adoption and adapting of existing code base, as opposed to any custom API
 - API features, which provide rich reporting functionality (gauges, timing, counters) as well as flexible configuration, e.g. by setting common parameters, such as tags or prefixes from all communications.
 
 A perfect choice to satisfy these criteria is the `hot-shots` library, which is a fork of `node-statsd` providing familiar API, with enhancements for DofStatsD features.
