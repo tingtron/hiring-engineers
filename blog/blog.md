@@ -398,7 +398,7 @@ server resources or improving load balancing.
 
 ## Error Events created by Datadog Monitor
 
-It is a good idea to receive a notification that error rate exceeds a certain threashold,
+It is a good idea to receive a notification that error rate exceeds a certain threshold,
 to indicate potential problems and allow responding to the situation.
 
 Datadog has an easy to use interface to create complex monitoring scenarios.
