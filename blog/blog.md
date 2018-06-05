@@ -1,9 +1,9 @@
 
 # Managing Errors at Saturation Point in Node.js Using DogStatsD and Hot-Shot Client
 
-If you’re here it’s because your looking for the secret sauce to improve reliability of your web-based product. You can follow along without the prerequisites but it will not make as much sense unless you have all the components. As with any programming language, platform, or tool that doesn’t come bundled, getting up and running takes an initial setup. Node.js has a far better installation experience than most tools or platforms; just run the installer and you’re good to go.
+If you are here it is because you are looking for the secret sauce to improve reliability of your web-based product. You can follow along without the prerequisites but it will not make as much sense unless you have all the components. As with any programming language, platform, or tool that doesn’t come bundled, getting up and running takes an initial setup. Node.js has a far better installation experience than most tools or platforms; just run the installer and you’re good to go.
 
-The Hot-shots library is used as a use case here because it integrates well with Node.js and the statics collection methods. We’re choosing something other than Python because we wanted to show another library provided by Datadog community, which might not be as well-know to wider solution providers audience.
+The Hot-shots library is used as a use case here because it integrates well with Node.js and the statistics collection methods. We’re choosing something other than Python because we wanted to show another library provided by Datadog community, which might not be as well-known to wider solution providers audience.
 
 ## Prerequisites
 
@@ -32,7 +32,7 @@ Install Node.js
     $ curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
 ```
 
-Note: if there are issue installing Node.js or later packages, see [Troubleshooting][#troubleshooting] below.
+Note: If there are issue installing Node.js or later packages, see [Troubleshooting][#troubleshooting] below.
 
 Test with [hello.js](hello.js).
 
@@ -61,7 +61,7 @@ Using command line.
     $ echo -n "custom_metric:20|g|#shell" >/dev/udp/localhost/8125
 ```
 
-Note: this is similar to using Datadog agent API, as in Python,
+Note: This is similar to using Datadog agent API, as in Python,
 except, here we are sending a message directly to a local UDP server.
  
 This approach of sending to a UDP server is used by many community
@@ -77,7 +77,7 @@ On older Ubuntu distributions (precise), the versions of node and npm are outdat
 npm v1.1.4 and node v0.6.12.
 This may cause conflicts with npm registry, e.g. getting an error "failed to fetch from registry".
 
-To use `nvm` we follow instruction to [Install Node and npm to an Ubuntu box](http://clubmate.fi/install-node-and-npm-to-a-ubuntu-box/).
+To use `nvm` we follow the instructions to [install Node and npm to an Ubuntu box](http://clubmate.fi/install-node-and-npm-to-a-ubuntu-box/).
 
 This will install the more recent versions of node (v0.11.14) and npm (2.0.0).
 
@@ -98,7 +98,7 @@ nvm alias default v10.3.0   # for future
 The Agent client libraries typically do not measure statistics,
 they are tasked to communicate the collected statistics to the Agent.
 
-We use sevaral criteria for the Agent client library
+We use several criteria for the Agent client library
 - Integration with Node.js
 - Providing familiar standard interface such as StatsD to facilicate adoption and adapting of existing code base, as opposed to any custom API
 - API features, which provide rich reporting functionality (gauges, timing, counters) as well as flexible configuration, e.g. by setting common parameters, such as tags or prefixes from all communications.
@@ -112,7 +112,7 @@ For web Server stats (requests per second, request time, number of errors, etc.)
  - [request-stats](https://github.com/watson/request-stats) package 
 and chose to go along with `request-stats`, as the most flexible and straight-forward approach in terms of integration (call-back interface) and API (granulated structures for metrics).
 
-Note: to see how to collect stats for requests originated in Node.js itself,
+Note: To see how to collect stats for requests originated in Node.js itself,
 follow [Understanding & Measuring HTTP Timings with Node.js](https://blog.risingstack.com/measuring-http-timings-node-js/)
 
 
@@ -156,16 +156,16 @@ Although a small model application is used here for demonstration purposes,
 in real production environments, it makes sense to have such a small model 
 application with configurable processing and resource consumption parameters.
 This would allow dry-running the environment to verify the instrumentation
-infrastructure and veify the correct topology assumptions.
+infrastructure and verify the correct topology assumptions.
 
 Below we will look into some details. Complete source of the Node.js sample app is
-availalbe here:
+available here:
  * View source: [stats_hot.js](stats_hot.js)
 
 To model real life behavior, we will use a random complexity parameter _(n)_,
 which will determine the size and time of the response.
 
-For the puposes of this demo, our sample application will generate
+For the purposes of this demo, our sample application will generate
 random text whose size is proportionate to the response complexity, i.e. _O(n)_.
 The time will be defined as _square_ of the complexity parameter, _O(n<sup>2</sup>)_.
 
@@ -231,7 +231,7 @@ $ loadtest -n 200 -c 10 --rps 20 http://127.0.0.1:8081/
 ```
 See [loadtest_test.txt](loadtest_test.txt) for sample output.
 
-Note: to warm up Node.js server, the load should be increased gradually.
+Note: To warm up Node.js server, the load should be increased gradually.
 The above parameters is a good starting point.
 
 Lower load rate (before saturation)
@@ -243,20 +243,20 @@ Higher load rate (after saturation)
 $ loadtest -n 4000 -c 500 --rps 1000 http://127.0.0.1:8081/
 ```
 
-After increasing the load on the test web page, we can observe
+After the load goes up on the test web page, we can observe
 increased resource consumption in the Datadog System Dashboard.
 In particular, System Load, CPU Usage and System Memory show
-visible increase.
+visible growth.
 
 ![Load Saturation](041_Load_Saturation.png)
 
 We should expect that after further increase of the load, the server
 performance would suffer, and errors will start to appear.
 However, to get more specific insight into performance of individual
-requests, such as reponse time and error counts, we need to capture
+requests, such as response time and error counts, we need to capture
 certain request-processing statistics.
 
-Note: there are several ways for capturing performance indicators of a web application,
+Note: There are several ways for capturing performance indicators of a web application,
 such as in the transport layer, load testing client, etc. However, here we'll be capturing
 statistics from inside the Node.js code itself. Doing so we can configure
 the complexity of responses (time and size in particular), and the error
@@ -338,13 +338,13 @@ function report(s) {
 ```
 
 Finally, we will be capturing error count for every situation when the
-ratio of the allocated and actual processing time exceed a certain threashold:
+ratio of the allocated and actual processing time exceed a certain threshold:
 ```javascript
     var start = Date.now()
     setTimeout(function() {
         var actual = Date.now() - start;
         var r = t / actual;
-        if (r < 0.10) {  // threashold: 0.10 automated load testing, 0.50 manual browser testing
+        if (r < 0.10) {  // threshold: 0.10 automated load testing, 0.50 manual browser testing
             console.error(`Respose for ${t} ms takes ${actual} ms ratio ${(r*100).toFixed(2)}%`);
             statsD.increment('error.count');
         ...
@@ -356,7 +356,7 @@ ratio of the allocated and actual processing time exceed a certain threashold:
 Applying the same load testing as shown (earlier)[#load-testing],
 we determine the saturation point as such when errors first start to appear.
 
-Then we excute the pre- and post- saturation load tests with different
+Then we execute the pre- and post- saturation load tests with different
 metrics tags, which will help in visualization:
 
  * Lower load rate (before saturation), with tag: `load_rate: low`
@@ -374,7 +374,7 @@ Next we observe the generated DogStatsD metrics in the Datadog Metrics Explorer:
 ![Metric Explorer](070_Hot_Metric_Explorer.png)
 
 To help illustrate the relationship between various metrics around the saturation point,
-we create a custom Dashbaord "My Node Stats".
+we create a custom Dashboard "My Node Stats".
 
 The `response.time` chart show high load in red, indicating 75ms line between high and low load areas.
 
@@ -382,7 +382,7 @@ The `error.count` chart show high error count area in orange, and mostly no erro
 
 ![Custom Stats Dashboard.png](080_Stats_Dashboard.png)
 
-Note: the spikes of errors at the start of each load period indicate warm-up problem
+Note: The spikes of errors at the start of each load period indicate warm-up problem
 of our configuration after server restart -- a good insight for real life applications.
 
 ## Analysis of Pre-Error Metrics
@@ -399,15 +399,15 @@ server resources or improving load balancing.
 ## Error Events created by Datadog Monitor
 
 It is a good idea to receive a notification that error rate exceeds a certain threashold,
-to incidate potential problems and allow responding to the situation.
+to indicate potential problems and allow responding to the situation.
 
 Datadog has an easy to use interface to create complex monitoring scenarios.
 Here we create a monitor for error events when the number of errors exceeds 500.
 
 ![Error Monitor](090_Hot_Error_Monitor.png)
 
-The resulsting Error Events and the related automatic Error Resolution notification appear in the
-the Datadog Events area.
+The resulting Error Events and the related automatic Error Resolution notification appear in the
+Datadog Events area.
 
 ![Error Event](092_Hot_Error_Event.png)
 
@@ -417,7 +417,7 @@ of the event.
 ![Error Details](095_Hot_Error_Details.png)
 
 
-## Acknowledgements
+## Acknowledgments
 
 Using Datadog and DogStatsD wouldn't be as easy and productive without
 numerous community contributed integrations and libraries created for
