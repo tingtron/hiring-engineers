@@ -8,6 +8,8 @@ We tackle some of the hardest technical problems while delivering a product that
 
 Do you want to make a difference? Are you exceptional at your job, and intrinsically motivated by it? Do you eat hard problems for breakfast and find them beautifully simple solutions by lunchtime? Do you ever wish you were there in the early days of these startups everyone is talking about?
 
+<img src="CAGED_Roots_and_Shapes.png" width="400">
+
 ![Test Me](CAGED_Roots_and_Shapes.png)
 <!-- .element style="width: 400px" -->
 
